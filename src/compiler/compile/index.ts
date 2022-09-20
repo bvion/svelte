@@ -26,6 +26,7 @@ const valid_options = [
 	'hydratable',
 	'legacy',
 	'customElement',
+	'forceGenerateCSS',
 	'namespace',
 	'tag',
 	'css',

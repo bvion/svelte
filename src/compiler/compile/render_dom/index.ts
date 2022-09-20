@@ -34,7 +34,8 @@ export default function dom(
 		body.push(b`const ${renderer.file_var} = ${file};`);
 	}
 
-	const css = component.stylesheet.render(options.filename, true /*!options.customElement */);
+	const generate_css = options.forceGenerateCSS || !options.customElement;
+	const css = component.stylesheet.render(options.filename, generate_css);
 
 	const css_sourcemap_enabled = check_enable_sourcemap(options.enableSourcemap, 'css');
 
@@ -51,7 +52,7 @@ export default function dom(
 	const add_css = component.get_unique_name('add_css');
 
 	const should_add_css = (
-		/* !options.customElement && */
+		generate_css &&
 		!!styles &&
 		options.css !== false
 	);

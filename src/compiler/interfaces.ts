@@ -178,6 +178,7 @@ export interface CompileOptions {
 	hydratable?: boolean;
 	legacy?: boolean;
 	customElement?: boolean;
+	forceGenerateCSS?: boolean;
 	tag?: string;
 	css?: boolean;
 	loopGuardTimeout?: number;
@@ -191,6 +192,7 @@ export interface CompileOptions {
 export interface ParserOptions {
 	filename?: string;
 	customElement?: boolean;
+	forceGenerateCSS?: boolean;
 }
 
 export interface Visitor {

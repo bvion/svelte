@@ -30,9 +30,11 @@ export default function ssr(
 	// TODO put this inside the Renderer class
 	const literal = renderer.pop();
 
+	const generate_css = options.forceGenerateCSS || !options.customElement;
+
 	// TODO concatenate CSS maps
-	const css = /* options.customElement ?
-		{ code: null, map: null } : */
+	const css = !generate_css ?
+		{ code: null, map: null } :
 		component.stylesheet.render(options.filename, true);
 
 	const uses_rest = component.var_lookup.has('$$restProps');

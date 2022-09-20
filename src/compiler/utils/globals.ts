@@ -637,6 +637,7 @@ export default new Set([
 	'crossOriginIsolated',
 	'crypto',
 	'customElements',
+	'forceGenerateCSS',
 	'decodeURI',
 	'decodeURIComponent',
 	'devicePixelRatio',

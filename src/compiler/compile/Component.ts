@@ -188,7 +188,7 @@ export default class Component {
 		this.pop_ignores();
 
 		this.elements.forEach(element => this.stylesheet.apply(element));
-		/* if (!compile_options.customElement) */ this.stylesheet.reify();
+		if (!compile_options.customElement || compile_options.forceGenerateCSS) this.stylesheet.reify();
 		this.stylesheet.warn_on_unused_selectors(this);
 	}
 
@@ -347,13 +347,13 @@ export default class Component {
 				this.exports_from
 			);
 
-			/*
-			css = compile_options.customElement
-				? { code: null, map: null }
-				: result.css;
-			*/
-
 			css = result.css;
+
+			const generate_css = compile_options.forceGenerateCSS || !compile_options.customElement;
+
+			if (!generate_css) {
+				css = { code: null, map: null };
+			}
 
 			const js_sourcemap_enabled = check_enable_sourcemap(compile_options.enableSourcemap, 'js');
 
